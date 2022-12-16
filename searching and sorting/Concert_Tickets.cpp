@@ -15,54 +15,43 @@ if (arr[i] == 0) {vect.push_back(i); for (int j = 2 * i; j <= n; j += i)arr[j] =
 //-----------------------BINARY EXPONTIATION----------------------
 ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} return res;}
 //----------------------code begines here-----------------------
-void dontquit()
+
+int main()
 {
-    ll n,m,k; cin>>n>>m>>k;
-    vector<ll>v,v1;
+     ll n,m; cin>>n>>m;
+    set<pair<ll,ll>>ms;
+    // set<pair<ll,ll>>:: iterator it;
     for(ll i=0;i<n;i++)
+    {
+        ll x; cin>>x;
+        ms.insert({x,i});
+    }
+    vector<ll>v; 
+    for(ll i=0;i<m;i++) 
     {
         ll x; cin>>x;
         v.push_back(x);
     }
-    for(ll i=0;i<m;i++)
+    for(ll i=0;i<m;i++) 
     {
-        ll x; cin>>x;
-        v1.push_back(x);
+        pair<ll,ll>p={v[i],0};
+        auto it= lower_bound(all(ms),p);
+        if(((*it).first)==v[i])
+        {
+            cout<<v[i]<<endl;
+            ms.erase(it);
+        }
+        else if(it==ms.begin())
+        {
+            cout<<-1<<endl;
+        }
+        else
+        {
+            it--;
+            cout<<(*it).first<<endl;
+            ms.erase(it);
+        }
     }
-    sort(all(v));
-    sort(all(v1));
-  ll i=0,j=0;
-  ll count=0;
-  while(i<n)
-  {
-    while( j<m && v1[j]<v[i]-k)
-    {
-        j++;
-    }
-    if(i<n && j<m && abs(v[i]-v1[j])<=k)
-    {
-         while(i<n && j<m && abs(v[i]-v1[j])<=k)
-         {
-        i++;
-        j++;
-        count++;
-            }
 
-    }
-   else
-    i++;
-  }
-  cout<<count<<endl;
-
-
-}
-int main()
-{
-ll t=1;
-// cin>>t;
-while(t--)
-{
-dontquit();
-}
 return 0;
 }

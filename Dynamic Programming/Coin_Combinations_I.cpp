@@ -4,7 +4,7 @@ using namespace std;
 #define vll vector<ll>
 #define fori(n) for(int i=0;i<n;i++)
 #define pb push_back
-ll MOD = 998244353;
+#define MOD 1000000007
 #define dbg(x) cout << #x << " = " << x << ln
 #define INF 2e18
 #define all(x) (x).begin(), (x).end()
@@ -17,52 +17,33 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {
-    ll n,m,k; cin>>n>>m>>k;
-    vector<ll>v,v1;
+    ll n,x;  cin>>n>>x;
+    ll coins[n];
     for(ll i=0;i<n;i++)
+    cin>>coins[i];
+    ll dp[x+1];
+    dp[0]=1;
+    for(ll x1=1;x1<=x;x1++)
     {
-        ll x; cin>>x;
-        v.push_back(x);
+        dp[x1]=0;
+        for(ll i=0;i<n;i++)
+        {
+            
+            if((x1-coins[i])>=0)
+            dp[x1]=((dp[x1])+(dp[x1-coins[i]]%MOD))%MOD;
+        }
     }
-    for(ll i=0;i<m;i++)
-    {
-        ll x; cin>>x;
-        v1.push_back(x);
-    }
-    sort(all(v));
-    sort(all(v1));
-  ll i=0,j=0;
-  ll count=0;
-  while(i<n)
-  {
-    while( j<m && v1[j]<v[i]-k)
-    {
-        j++;
-    }
-    if(i<n && j<m && abs(v[i]-v1[j])<=k)
-    {
-         while(i<n && j<m && abs(v[i]-v1[j])<=k)
-         {
-        i++;
-        j++;
-        count++;
-            }
-
-    }
-   else
-    i++;
-  }
-  cout<<count<<endl;
-
-
+    cout<<dp[x]<<endl;
 }
 int main()
 {
-ll t=1;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll t=1;
 // cin>>t;
-while(t--)
-{
-dontquit();
-}
-return 0;
+    while(t--)
+    {
+    dontquit();
+    }
+    return 0;
 }

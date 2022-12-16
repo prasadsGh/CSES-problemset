@@ -17,43 +17,37 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {
-    ll n,m,k; cin>>n>>m>>k;
-    vector<ll>v,v1;
-    for(ll i=0;i<n;i++)
+    ll n; cin>>n;
+    vector<ll>v;
+    for(int i=0;i<n;i++)
     {
-        ll x; cin>>x;
-        v.push_back(x);
+    ll x;
+    cin>>x;
+    v.pb(x);
     }
-    for(ll i=0;i<m;i++)
+    ll i=0,j=0;
+    set<ll>s;
+    ll ans=0;
+    int flag=0;
+    while(i<n && j<n)
     {
-        ll x; cin>>x;
-        v1.push_back(x);
-    }
-    sort(all(v));
-    sort(all(v1));
-  ll i=0,j=0;
-  ll count=0;
-  while(i<n)
-  {
-    while( j<m && v1[j]<v[i]-k)
-    {
-        j++;
-    }
-    if(i<n && j<m && abs(v[i]-v1[j])<=k)
-    {
-         while(i<n && j<m && abs(v[i]-v1[j])<=k)
-         {
-        i++;
-        j++;
-        count++;
-            }
+        while(j<n && s.find(v[j])==s.end())
+        {
+            s.insert(v[j]);
+            ans=max(ans,j-i+1);
 
-    }
-   else
-    i++;
-  }
-  cout<<count<<endl;
+            j++;
 
+        }
+        while( j<n && s.find(v[j])!=s.end())
+        {   
+            s.erase(v[i]); 
+            i++;
+
+        }
+    }
+    
+    cout<<ans<<endl;
 
 }
 int main()

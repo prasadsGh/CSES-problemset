@@ -17,42 +17,21 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {
-    ll n,m,k; cin>>n>>m>>k;
-    vector<ll>v,v1;
-    for(ll i=0;i<n;i++)
+    ll n; cin>>n;
+    ll count=0;
+    while(n>0)
     {
-        ll x; cin>>x;
-        v.push_back(x);
-    }
-    for(ll i=0;i<m;i++)
-    {
-        ll x; cin>>x;
-        v1.push_back(x);
-    }
-    sort(all(v));
-    sort(all(v1));
-  ll i=0,j=0;
-  ll count=0;
-  while(i<n)
-  {
-    while( j<m && v1[j]<v[i]-k)
-    {
-        j++;
-    }
-    if(i<n && j<m && abs(v[i]-v1[j])<=k)
-    {
-         while(i<n && j<m && abs(v[i]-v1[j])<=k)
-         {
-        i++;
-        j++;
+        ll k=n;
+        ll val=0;
+        while(k>0)
+        {
+            val=max(val,(k%10));
+            k/=10;
+        }
         count++;
-            }
-
+        n-=val;
     }
-   else
-    i++;
-  }
-  cout<<count<<endl;
+    cout<<count<<endl;
 
 
 }

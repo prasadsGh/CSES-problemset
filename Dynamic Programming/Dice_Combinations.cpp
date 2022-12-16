@@ -4,7 +4,7 @@ using namespace std;
 #define vll vector<ll>
 #define fori(n) for(int i=0;i<n;i++)
 #define pb push_back
-ll MOD = 998244353;
+ll MOD = 1e9+7;
 #define dbg(x) cout << #x << " = " << x << ln
 #define INF 2e18
 #define all(x) (x).begin(), (x).end()
@@ -15,49 +15,25 @@ if (arr[i] == 0) {vect.push_back(i); for (int j = 2 * i; j <= n; j += i)arr[j] =
 //-----------------------BINARY EXPONTIATION----------------------
 ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} return res;}
 //----------------------code begines here-----------------------
+ll arr[1000005];
+ll f(ll n)
+{
+    if(n==0) return 1;
+    if(n<0) return 0;
+    if(arr[n]!=-1) return arr[n];
+    arr[n]=(f(n-1)%MOD +f(n-2)%MOD+ f(n-3)%MOD+ f(n-4)%MOD +f(n-5)%MOD+ f(n-6)%MOD)%MOD;
+    return arr[n];
+}
 void dontquit()
 {
-    ll n,m,k; cin>>n>>m>>k;
-    vector<ll>v,v1;
-    for(ll i=0;i<n;i++)
-    {
-        ll x; cin>>x;
-        v.push_back(x);
-    }
-    for(ll i=0;i<m;i++)
-    {
-        ll x; cin>>x;
-        v1.push_back(x);
-    }
-    sort(all(v));
-    sort(all(v1));
-  ll i=0,j=0;
-  ll count=0;
-  while(i<n)
-  {
-    while( j<m && v1[j]<v[i]-k)
-    {
-        j++;
-    }
-    if(i<n && j<m && abs(v[i]-v1[j])<=k)
-    {
-         while(i<n && j<m && abs(v[i]-v1[j])<=k)
-         {
-        i++;
-        j++;
-        count++;
-            }
-
-    }
-   else
-    i++;
-  }
-  cout<<count<<endl;
-
+  ll n; cin>>n;
+  ll ans= f(n);
+  cout<<ans<<endl;
 
 }
 int main()
 {
+    memset(arr,-1,sizeof(arr));
 ll t=1;
 // cin>>t;
 while(t--)
