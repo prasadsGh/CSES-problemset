@@ -1,47 +1,40 @@
+/* author:prasad patil
+   codeforces:rocklee07
+*/
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long 
-#define vll vector<ll>
-#define fori(n) for(int i=0;i<n;i++)
-#define pb push_back
-ll MOD = 998244353;
-#define dbg(x) cout << #x << " = " << x << ln
-#define INF 2e18
-#define all(x) (x).begin(), (x).end()
-//"this is code of prasads_cf"
-//-----------------------SIEVE OF ERATOSTHENES-----------------
-vector<ll> sieve(int n) {int*arr = new int[n + 1](); vector<ll> vect; for (int i = 2; i <= n; i++)
-if (arr[i] == 0) {vect.push_back(i); for (int j = 2 * i; j <= n; j += i)arr[j] = 1;} return vect;}
-//-----------------------BINARY EXPONTIATION----------------------
-ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} return res;}
-//----------------------code begines here-----------------------
-void dontquit()
+#define int long long
+
+void prasad()
 {
-    ll n; cin>>n;
-    vector<ll>v;
-    for(int i=0;i<n;i++)
-    {
-    ll x;
-    cin>>x;
-    v.pb(x);
-    }
-    cout<<0<<" ";
-    for(int i=1;i<n;i++)
-    {
-        if(v[i-1]<v[i]) cout<<i<<" ";
-        else cout<<0<<" ";
-    }
-    cout<<endl;
+	vector<int>v;
+	for (int i = 0; i < 8; i++)
+	{
+		v.push_back(0);
+	}
+	v.push_back(9);
+	cout << "Hello WOrld";
+	cout << v.size() << " " << v.capacity() << endl;
+}
+
+signed main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
 
 
-}
-int main()
-{
-ll t=1;
-// cin>>t;
-while(t--)
-{
-dontquit();
-}
-return 0;
+#ifndef ONLINE_JUDGE
+	freopen("input.txt", "r", stdin);
+	freopen("error.txt", "w", stderr);
+	freopen("output.txt", "w", stdout);
+#endif
+
+	int t = 1;
+	cout << "Hello WOrld";
+
+	while (t--)
+	{
+		prasad();
+	}
+	return 0;
 }
